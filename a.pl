@@ -1,2 +1,2 @@
 likes(pramit,biriyani).
-likes(sayantani,biriyani).
+likes(sayantani,fridge_magnets).
