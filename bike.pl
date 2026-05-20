@@ -1,0 +1,22 @@
+basicpart(rim).
+basicpart(spoke).
+basicpart(rearframe).
+basicpart(handles).
+basicpart(gears).
+basicpart(bolt).
+basicpart(nut).
+basicpart(fork_).
+basicpart(frontframe).
+assembly(bike,[wheel,wheel,frame]).
+assembly(wheel,[spoke,rim,hub]).
+assembly(frame,[rearframe,frontframe]).
+assembly(hub,[gears,axle]).
+assembly(axle,[bolt,nut]).
+partsof(X,[X]):-basicpart(X).
+partsof(X,P):-assembly(X,Subparts),partsoflist(Subparts,P).
+partsoflist([],[]).
+partsoflist([P|Tail],Total):-
+    partsof(P,Headparts),
+    partsoflist(Tail,Tailparts),
+    append(Headparts,Tailparts,Total).
+    
